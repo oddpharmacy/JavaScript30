@@ -62,7 +62,16 @@
           `audio[data-key="${e.keyCode}"]`
         );
         if (!selectedAudio) return;
+        selectedAudio.currentTime = 0;
+
+        const selectedKey = document.querySelector(
+          `div[data-key="${e.keyCode}"]`
+        );
+        selectedKey.classList.add("playing");
+
         selectedAudio.play();
+
+        setTimeout(() => selectedKey.classList.remove("playing"), 300);
       });
     </script>
   </body>
